@@ -3,7 +3,7 @@
 # 
 # Description:  Script template for Maya.
 # 
-# Author:       Loic Dautry Loic.Dautry@mikrosanimation.com
+# Author:       Loic Dautry
 # 
 # Version:      0.1
 
