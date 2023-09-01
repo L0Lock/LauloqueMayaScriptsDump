@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
 # Name:         Object Renamer
 # 
 # Description:  Pops up a popup to rename the selected object. Install as a custom script hotkey.

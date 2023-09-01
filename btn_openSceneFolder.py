@@ -1,4 +1,6 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
 # Name:         Open maya scene folder
+#
 # Description:  Opens the current scene's folder (needs to be a saved file).
 # 
 # Author:       Loïc "Lauloque" Dautry
