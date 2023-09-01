@@ -3,7 +3,7 @@
 # 
 # Description:  Creates Locator objects on the selected objects with the same animation.
 # 
-# Author:       Loïc "Lauloque Dautry
+# Author:       Loïc "Lauloque" Dautry
 #
 # Source:       https://github.com/L0Lock/LauloqueMayaScriptsDump
 # 

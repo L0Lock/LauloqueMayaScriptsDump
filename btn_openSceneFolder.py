@@ -1,7 +1,7 @@
 # Name:         Open maya scene folder
 # Description:  Opens the current scene's folder (needs to be a saved file).
 # 
-# Author:       Loïc "Lauloque Dautry
+# Author:       Loïc "Lauloque" Dautry
 #
 # Source:       https://github.com/L0Lock/LauloqueMayaScriptsDump
 # 
