@@ -3,7 +3,9 @@
 # 
 # Description:  Copies the animation from the first selected object to the second selected object.
 # 
-# Author:       Loic Dautry
+# Author:       Loïc "Lauloque Dautry
+#
+# Source:       https://github.com/L0Lock/LauloqueMayaScriptsDump
 # 
 # Version:      0.2
 
