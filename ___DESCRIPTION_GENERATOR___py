@@ -1,0 +1,88 @@
+import os, re
+from pathlib import Path
+
+# Function to extract description and important lines from a .py file
+def extract_description_and_important(file_path):
+    description = ""
+    important = ""
+    with open(file_path, "r") as file:
+        lines = file.readlines()
+        for line in lines[:10]:  # Only check the first 10 lines
+            if line.startswith("# Description: "):
+                description = line.strip("# Description: ").strip()
+            elif line.startswith("# IMPORTANT: "):
+                important = line.strip("# IMPORTANT: ").strip()
+    return description, important
+
+# Function to update the readme.md file
+def update_readme_once(readme_path):
+    # Specify the name of the input file
+    readme_file_name = readme_path
+
+    # Read the contents of the readme file
+    with open(readme_file_name, 'r') as file:
+        readme_lines = file.readlines()
+
+    # Find the line that contains "## Scripts Description"
+    for i, line in enumerate(readme_lines):
+        if '## Scripts Description' in line:
+            break
+
+    # Keep the line containing "## Scripts Description" and the lines after it
+    updated_contents = readme_lines[:i + 1]
+
+    # Write the updated contents back to the same readme file
+    with open(readme_file_name, 'w') as file:
+        file.writelines(updated_contents)
+
+    return i
+
+# Function to append content to the readme.md file
+def append_to_readme(readme_path, new_content):
+    with open(readme_path, 'a') as file:
+        file.write(new_content)
+
+# Main script
+if __name__ == "__main__":
+    readme_path = "readme.md"  # Replace with your actual readme file path
+    folder_path = "."  # Replace with the folder containing .py files
+
+    cleanup_index = update_readme_once(readme_path)
+
+    # Create a list of file paths to process
+    file_paths_to_process = []
+    exclude = [
+        "source",
+        "___DESCRIPTION_GENERATOR___"
+    ]
+
+    for path in sorted(Path().rglob('*.py')):
+        if any(item in str(path) for item in exclude):
+            pass
+        else:
+            print(path)
+            file_paths_to_process.append(path)
+
+    for file_path in file_paths_to_process:
+        description, important = extract_description_and_important(file_path)
+
+        # Update the readme.md content
+        file_name = os.path.basename(file_path)
+        subfolder = os.path.dirname(file_path)
+        if subfolder == ".":
+            link_name = f"[{file_name}]"
+        else:
+            link_name = f"[{os.path.join(subfolder, file_name)}]"
+
+        github_url = f"https://github.com/L0Lock/LauloqueMayaScriptsDump/blob/main/{os.path.relpath(file_path, folder_path).replace(os.sep, '/')}"
+        raw_github_url = f"https://raw.githubusercontent.com/L0Lock/LauloqueMayaScriptsDump/main/{os.path.relpath(file_path, folder_path).replace(os.sep, '/')}"
+
+        new_content = f"### {link_name}({github_url}) ([raw]({raw_github_url}))\n"
+        if description:
+            new_content += f"***Description:*** {description}\n"
+        if important:
+            new_content += f"***Important:*** {important}\n"
+        new_content += "\n"
+
+        # Append new content to the readme.md file
+        append_to_readme(readme_path, new_content)
