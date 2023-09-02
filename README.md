@@ -1,5 +1,7 @@
 # LauloqueMayaScriptsDump
 
+![GitHub](https://img.shields.io/github/license/L0Lock/LauloqueMayaScriptsDump?style=for-the-badge) ![Static Badge](https://img.shields.io/badge/Maya-v2020-orange?style=for-the-badge) ![Static Badge](https://img.shields.io/badge/Maya-v2023-orange?style=for-the-badge)
+
 A bunch of scripts for maya.
 
 ## General Usage
